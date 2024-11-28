@@ -18,7 +18,7 @@ export class GerenciamentoController {
         return this.gerenciamentoservice.findAll();
     }
 
-    @Put(':id')
+    @Patch(':id')
     update(@Param('id') id: number, @Body() updateGerenciamentoDto: UpdateGerenciamentoDto,){
         return this.gerenciamentoservice.update(id, updateGerenciamentoDto);
     }

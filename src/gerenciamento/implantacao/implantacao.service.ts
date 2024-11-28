@@ -49,8 +49,9 @@ export class GerenciamentoService{
         // Se nenhum registro foi afetado, o ID não existe
         throw new NotFoundException(`ID ${id} não encontrado`);
       }
-  
-      return `ID ${id} excluído com sucesso`;
+    const retorno = `ID ${id} excluído com sucesso`;
+
+      return  `ID ${id} excluído com sucesso` ;
    }
    
 }
