@@ -31,7 +31,7 @@ export class gerenciamento_implantacao{
     municipio: string;
 
     @Column()
-    regiao: string;
+    regional: string;
 
     @Column({ type: 'text', nullable: true })
     pdf: string;
