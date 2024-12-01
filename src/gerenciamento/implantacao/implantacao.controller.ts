@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put,Query } from '@nestjs/common';
 import { GerenciamentoService } from './implantacao.service';
 import { CreateGerenciamentoDto } from './dto/create-implantacao.dto';
 import { UpdateGerenciamentoDto } from './dto/update-implantacao.dto';
@@ -13,9 +13,16 @@ export class GerenciamentoController {
         return this.gerenciamentoservice.create(createGerenciamentoDto)
     }
 
+    /*
     @Get()
     findAll(){
         return this.gerenciamentoservice.findAll();
+    }
+    */
+
+    @Get()
+    findAll(@Query('page') page = 1, @Query('pageSize') pageSize = 7) {
+        return this.gerenciamentoservice.findAll(page, pageSize);
     }
 
     @Patch(':id')
