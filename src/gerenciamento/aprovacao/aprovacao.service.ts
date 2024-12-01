@@ -26,9 +26,21 @@ export class GerenciamentoService {
     }
   }
   
-
+ /*
   async findAll(): Promise<gerenciamento_aprovacao[]> {
     return this.gerenciamentoRepository.find();
+  }
+    */
+
+  async findAll(page: number = 1, pageSize: number = 7) {
+    const [data, total] = await this.gerenciamentoRepository.findAndCount({
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+    });
+    return {
+      data,
+      total,
+    };
   }
 
   async update(
