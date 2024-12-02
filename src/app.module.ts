@@ -15,9 +15,9 @@ import { ImplantacaoModule } from './gerenciamento/implantacao/implantacao.modul
       type: 'postgres',
       host: 'localhost',       // Endereço do servidor do banco de dados
       port: 5432,              // Porta padrão do PostgreSQL
-      username: 'postgres', // Nome do usuário do banco de dados
-      password: 'postgres',   // Senha do banco de dados
-      database: 'postgres', // Nome do banco de dados
+      username: 'user_mapa_dev', // Nome do usuário do banco de dados
+      password: 'MAPA_d3v',   // Senha do banco de dados
+      database: 'ief_car', // Nome do banco de dados
       entities: [gerenciamento_aprovacao, gerenciamento_priorizacao, gerenciamento_implantacao], // Entidades
       synchronize: true,       // Sincroniza o esquema do banco de dados, apenas para desenvolvimento
       logging: true, //Ativa logs para visualizarmos possíveis erros
