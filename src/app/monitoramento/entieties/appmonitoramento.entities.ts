@@ -39,11 +39,11 @@ export class app_monitoramento {
     @Column()
     numero_especies_nativas: number;
     
-    @Column("bytea") //conjunto de bytes
-    foto_panoramica:  Buffer;
-    
-    @Column("bytea")   
-    foto_detalhada: Buffer;
+    @Column({ type: 'bytea', nullable: true })
+    foto_panoramica: Buffer;
+  
+    @Column({ type: 'bytea', nullable: true })
+    foto_detalhada: Buffer
     
     @Column()
     data_medicao: Date;

@@ -43,12 +43,12 @@ export class app_implantacao{
     @Column({ type: "float", default: 0, nullable: false })
     area_implantada: number;
     
-    @Column("bytea") //conjunto de bytes
-    foto_panoramica:  Buffer;
-    
-    @Column("bytea")   
+    @Column({ type: 'bytea', nullable: true })
+    foto_panoramica: Buffer;
+  
+    @Column({ type: 'bytea', nullable: true })
     foto_detalhada: Buffer;
-
+    
     @Column({ type: 'timestamp', nullable: true })
     criacao: Date;
   

@@ -4,9 +4,6 @@ import { gerenciamento_aprovacao } from "./entieties/aprovacao.entities";
 import { TestingModule, Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 
-
-
-
 const mockRpository = () =>({
 
     //criando um mock - jest.fn criar uma função simulada para retornar valores e verificaçoes

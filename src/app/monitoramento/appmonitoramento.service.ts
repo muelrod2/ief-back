@@ -22,9 +22,9 @@ export class AppmonitoramentoService {
     
         const newRecord = this.appRepository.create({
           ...otherData, // Insere as outras propriedades do DTO
-          foto_panoramica: Buffer.from(foto_panoramica, 'base64'), // Converte base64 para Buffer
-          foto_detalhada: Buffer.from(foto_detalhada, 'base64'),   // Converte base64 para Buffer
-          criacao: new Date(), // Adiciona a data atual ao campo 'criacao'
+          foto_panoramica: foto_panoramica && this.convertBase64ToBuffer(foto_panoramica), // Converte base64 para Buffer, se fornecido
+          foto_detalhada: foto_detalhada && this.convertBase64ToBuffer(foto_detalhada), // Converte base64 para Buffer, se fornecido
+          criacao: new Date(), // Adiciona a data atual ao campo 'criacao''
         });
     
         return await this.appRepository.save(newRecord);
@@ -59,8 +59,8 @@ export class AppmonitoramentoService {
     
       Object.assign(existingRecord, otherData, {
         atualizacao: new Date(),
-        ...(foto_panoramica && { foto_panoramica: Buffer.from(foto_panoramica, 'base64') }), // Converte base64 para Buffer
-        ...(foto_detalhada && { foto_detalhada: Buffer.from(foto_detalhada, 'base64') }),   // Converte base64 para Buffer
+        ...(foto_panoramica && { foto_panoramica: this.convertBase64ToBuffer(foto_panoramica) }), // Converte base64 para Buffer
+      ...(foto_detalhada && { foto_detalhada: this.convertBase64ToBuffer(foto_detalhada) }),  
       });
     
       return this.appRepository.save(existingRecord);
@@ -75,5 +75,14 @@ export class AppmonitoramentoService {
     }
 
     return `ID ${id} excluído com sucesso`;
+  }
+
+   // Função para converter base64 em Buffer
+   private convertBase64ToBuffer(base64: string): Buffer {
+    // Valida se a string base64 não está vazia e é válida
+    if (!base64 || base64.trim() === '') {
+      throw new Error('Invalid base64 string');
+    }
+    return Buffer.from(base64, 'base64');
   }
 }
