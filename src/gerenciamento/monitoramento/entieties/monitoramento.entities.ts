@@ -1,9 +1,10 @@
-import { app_implantacao } from "src/app/implantacao/entieties/appimplantacao.entities";
+import { app_monitoramento } from "src/app/monitoramento/entieties/appmonitoramento.entities";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 
+
 @Entity()
-export class gerenciamento_implantacao{
+export class gerenciamento_monitoramento {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -23,9 +24,6 @@ export class gerenciamento_implantacao{
     modulos_fiscais: number;
 
     @Column()
-    ano: string;
-
-    @Column()
     progresso: number;
 
     @Column()
@@ -34,18 +32,17 @@ export class gerenciamento_implantacao{
     @Column()
     regional: string;
 
-    @Column({ type: 'text', nullable: true })
-    pdf: string;
-
-    // Relacionamento com a tabela app_implantacao
-     @ManyToOne(() => app_implantacao, (appImplantacao) => appImplantacao.id)
+    @Column({ type: 'varchar', length: 255, nullable: true })
+    pdf?: string; 
+    
+     // Relacionamento com a tabela app_monitoramento
+    @ManyToOne(() => app_monitoramento, (appMonitoramento) => appMonitoramento.id)
     @JoinColumn({ name: "app_gerenciamentoId" })  // Nome da coluna de chave estrangeira
-    app_implantacao: app_implantacao;
+    app_monitoramento: app_monitoramento;
 
     @Column({ type: 'timestamp', nullable: true })
     criacao: Date;
-  
+
     @Column({ type: 'timestamp', nullable: true })
     atualizacao: Date;
-
 }

@@ -14,7 +14,7 @@ export class gerenciamento_priorizacao{
     @Column() 
     codigo_solicitacao: string;
 
-    @Column()
+    @Column({ type: "float", default: 0, nullable: false })
     area: number;
 
     @Column()
@@ -29,7 +29,7 @@ export class gerenciamento_priorizacao{
     @Column()
     prioridade: string;
 
-    @Column()
+    @Column({ type: "float", default: 0, nullable: false })
     nota: number;
 
     @Column({ type: 'text', nullable: true })

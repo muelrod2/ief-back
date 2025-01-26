@@ -14,10 +14,10 @@ export class gerenciamento_aprovacao {
   @Column()
   codigo_solicitacao: string;
 
-  @Column()
+  @Column({ type: "float", default: 0, nullable: false })
   area: number;
 
-  @Column()
+  @Column({ type: "float", default: 0, nullable: false })
   modulos_fiscais: number;
 
   @Column()

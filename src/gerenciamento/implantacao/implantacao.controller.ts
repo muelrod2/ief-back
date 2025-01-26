@@ -1,9 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put,Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post,Query } from '@nestjs/common';
 import { GerenciamentoService } from './implantacao.service';
 import { CreateGerenciamentoDto } from './dto/create-implantacao.dto';
 import { UpdateGerenciamentoDto } from './dto/update-implantacao.dto';
 
-@Controller('implantacao')
+@Controller('gerenciamento/implantacao')
 export class GerenciamentoController {
 
     constructor(private readonly gerenciamentoservice: GerenciamentoService){}

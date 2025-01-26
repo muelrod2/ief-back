@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsOptional, IsDate, IsNotEmpty, IsUrl } from 'class-validator';
+import { IsString, IsNumber, IsOptional, IsDate, IsUrl } from 'class-validator';
 
 export class UpdateGerenciamentoDto {
   @IsNumber()

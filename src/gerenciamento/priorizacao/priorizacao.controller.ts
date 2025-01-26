@@ -3,7 +3,7 @@ import { GerenciamentoService } from './priorizacao.service';
 import { CreateGerenciamentoDto } from './dto/create-priorizacao.dto';
 import { UpdateGerenciamentoDto } from './dto/update-priorizacao.dto';
 
-@Controller('priorizacao')
+@Controller('gerenciamento/priorizacao')
 export class GerenciamentoController {
 
     constructor(private readonly gerenciamentoservice: GerenciamentoService){}

@@ -1,9 +1,9 @@
 import { Controller, Post, Body, Get, Patch, Param, Delete, Query } from '@nestjs/common';
-import { GerenciamentoService } from './aprovacao.service';
-import { CreateGerenciamentoDto } from './dto/create-aprovacao.dto';
-import { UpdateGerenciamentoDto } from './dto/update-aprovacao.dto';
+import { GerenciamentoService } from './monitoramento.service';
+import { CreateGerenciamentoDto } from './dto/create-monitoramento.dto';
+import { UpdateGerenciamentoDto } from './dto/update-monitoramento.dto';
 
-@Controller('gerenciamento/aprovacao')
+@Controller('gerenciamento/monitoramento')
 export class GerenciamentoController {
   constructor(private readonly gerenciamentoService: GerenciamentoService) {}
 
