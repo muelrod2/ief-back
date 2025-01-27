@@ -65,7 +65,7 @@ export class AppimplantacaoService {
     Object.assign(existingRecord, otherData, {
       atualizacao: new Date(),
       ...(foto_panoramica && { foto_panoramica: this.convertBase64ToBuffer(foto_panoramica) }), // Converte base64 para Buffer
-      ...(foto_detalhada && { foto_detalhada: this.convertBase64ToBuffer(foto_detalhada) }),   // Converte base64 para Buffer
+      ...(foto_detalhada && { foto_detalhada: this.convertBase64ToBuffer(foto_detalhada) }),   
     });
 
     return this.appRepository.save(existingRecord);

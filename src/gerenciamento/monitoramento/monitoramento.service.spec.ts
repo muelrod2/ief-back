@@ -4,25 +4,18 @@ import { gerenciamento_monitoramento } from "./entieties/monitoramento.entities"
 import { TestingModule, Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 
-
-
-
-
 const mockRpository = () =>({
 
-    //criando um mock - jest.fn criar uma função simulada para retornar valores e verificaçoes
-    findAndCount: jest.fn(), //encotrar e contar quantos registros foram encotrados
-    save: jest.fn(), // salva no banco de dados 
-    findOneBy: jest.fn(), // busca um registro aprtir de um filtro
-    delete: jest.fn(), // exclui a entidade do banco 
+    
+    findAndCount: jest.fn(), 
+    save: jest.fn(), 
+    findOneBy: jest.fn(), 
+    delete: jest.fn(),
 });
 
-//mockrepository é um tipo que definie o mock 
-// keyof repsoturo<T> recbem todas os metodos disposniveis (find,save,delete...)
-//record cria um objetos onde cada metodos od repsositorio sera uma função mokca
+
 type mockRpository<T =any> = Partial <Record<keyof Repository<T>, jest.Mock>>;
 
-//descrevebdo um oc==conjunto de teste relacioandos ao gerenicamento service
 describe('GerenciamentoService',() => {
     let service: GerenciamentoService;
     let repository: mockRpository<gerenciamento_monitoramento>; //um mock do typeorm  sendo injetado no serviço
@@ -45,23 +38,22 @@ describe('GerenciamentoService',() => {
     );
 });    
 
-    // teste para ver se o serviços foi isntanciado
+    
     it('Serviço instanciado com sucesso!', () =>{
-        expect(service).toBeDefined(); // garante que a instancia do serviço nao seja sem definição
+        expect(service).toBeDefined(); 
     });
 
     describe('findAll', () => {
         it('Registros retornados com sucesso!',async ()=> {
             const mockData = [{id:1 , tipo: 'Fomento'}];
-            repository.findAndCount.mockResolvedValue([mockData, 1]); // codfirar o mock para simular o retonro esprado  do fundandcount
-        
+            repository.findAndCount.mockResolvedValue([mockData, 1]); 
             const result = await service.findAll(1,7);
 
-            expect(repository.findAndCount).toHaveBeenCalledWith({ //verifica o mentdo findandcount foi chaamdo com os argumento corretos
+            expect(repository.findAndCount).toHaveBeenCalledWith({ 
                 skip:0,
                 take: 7,
             });
-            expect(result).toEqual({data: mockData, total: 1}); // ga q o retorno do serviço esta correto
+            expect(result).toEqual({data: mockData, total: 1}); 
 
         });
     });    

@@ -131,7 +131,7 @@ describe('AppmonitoramentoController', () => {
           criacao: new Date('2024-12-10'),
           atualizacao: new Date('2024-12-10'),
         },
-        // Adicionando os campos que estavam faltando
+        
         data_implantacao: new Date('2025-01-01'),
         cobertura_dossel: 75.0,
         numero_regenerantes_nativos: 500,

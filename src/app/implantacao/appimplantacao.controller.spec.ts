@@ -108,12 +108,12 @@ describe('AppimplantacaoController', () => {
         periodo_inicio: new Date('2024-01-01'),
         periodo_fim: new Date('2025-12-31'),
         area_implantada: 100.0,
-        foto_panoramica: Buffer.from('abc123', 'utf-8'),  // Alterado para Buffer
-        foto_detalhada: Buffer.from('xyz456', 'utf-8'),   // Alterado para Buffer
+        foto_panoramica: Buffer.from('abc123', 'utf-8'),  
+        foto_detalhada: Buffer.from('xyz456', 'utf-8'),   
         criacao: new Date('2024-12-10'),
         atualizacao: new Date('2024-12-10'),
         app_implantacao: {
-          // Dados do app_implantacao, deve seguir a mesma estrutura, e as imagens também devem ser Buffer
+          // Dados do app_implantacao
           id: 1,
           nome_imovel: 'Fazenda Ouro Branco',
           localizacao: 'Zona rural de Ouro Branco, MG',
@@ -127,8 +127,8 @@ describe('AppimplantacaoController', () => {
           periodo_inicio: new Date('2024-01-01'),
           periodo_fim: new Date('2025-12-31'),
           area_implantada: 100.0,
-          foto_panoramica: Buffer.from('abc123', 'utf-8'),  // Alterado para Buffer
-          foto_detalhada: Buffer.from('xyz456', 'utf-8'),   // Alterado para Buffer
+          foto_panoramica: Buffer.from('abc123', 'utf-8'),  
+          foto_detalhada: Buffer.from('xyz456', 'utf-8'),   
           criacao: new Date('2024-12-10'),
           atualizacao: new Date('2024-12-10'),
         },

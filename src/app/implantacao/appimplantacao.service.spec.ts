@@ -6,34 +6,32 @@ import { getRepositoryToken } from "@nestjs/typeorm";
 
 const mockRpository = () =>({
 
-    //criando um mock - jest.fn criar uma função simulada para retornar valores e verificaçoes
-    findAndCount: jest.fn(), //encotrar e contar quantos registros foram encotrados
-    save: jest.fn(), // salva no banco de dados 
-    findOneBy: jest.fn(), // busca um registro aprtir de um filtro
-    delete: jest.fn(), // exclui a entidade do banco 
+    
+    findAndCount: jest.fn(),
+    save: jest.fn(), 
+    findOneBy: jest.fn(), 
+    delete: jest.fn(), 
 });
 
-//mockrepository é um tipo que definie o mock 
-// keyof repsoturo<T> recbem todas os metodos disposniveis (find,save,delete...)
-//record cria um objetos onde cada metodos od repsositorio sera uma função mokca
+
 type mockRpository<T =any> = Partial <Record<keyof Repository<T>, jest.Mock>>;
 
-//descrevebdo um oc==conjunto de teste relacioandos ao gerenicamento service
+
 describe('AppimplantacaoService',() => {
     let service: AppimplantacaoService;
-    let repository: mockRpository<app_implantacao>; //um mock do typeorm  sendo injetado no serviço
+    let repository: mockRpository<app_implantacao>;
 
     beforeEach(async() => {
         const module: TestingModule = await Test.createTestingModule({
             providers:[
-                AppimplantacaoService, // registra o serviço que estamos usando
+                AppimplantacaoService,
                 {
                     provide: getRepositoryToken(app_implantacao), // regista ao mock
-                    useValue: mockRpository(), // usa o mock deifinido anteiror mente
+                    useValue: mockRpository(),
                 },
             ],
         
-    }).compile(); //compilando o modulo 
+    }).compile(); 
 
     service = module.get<AppimplantacaoService>(AppimplantacaoService);
     repository = module.get<mockRpository<app_implantacao>>(
@@ -49,7 +47,7 @@ describe('AppimplantacaoService',() => {
     describe('findAll', () => {
         it('Registros retornados com sucesso!',async ()=> {
             const mockData = [{id:1 , tipo: 'Fomento'}];
-            repository.findAndCount.mockResolvedValue([mockData, 1]); // codfirar o mock para simular o retonro esprado  do fundandcount
+            repository.findAndCount.mockResolvedValue([mockData, 1]); 
         
             const result = await service.findAll(1,7);
 
@@ -57,7 +55,7 @@ describe('AppimplantacaoService',() => {
                 skip:0,
                 take: 7,
             });
-            expect(result).toEqual({data: mockData, total: 1}); // ga q o retorno do serviço esta correto
+            expect(result).toEqual({data: mockData, total: 1}); 
 
         });
     });    
@@ -129,12 +127,12 @@ describe('AppimplantacaoService',() => {
             periodo_inicio: new Date('2024-01-01'),
             periodo_fim: new Date('2025-12-31'),
             area_implantada: 100.0,
-            foto_panoramica: Buffer.from('abc123', 'utf-8'),  // Alterado para Buffer
-            foto_detalhada: Buffer.from('xyz456', 'utf-8'),   // Alterado para Buffer
+            foto_panoramica: Buffer.from('abc123', 'utf-8'),  
+            foto_detalhada: Buffer.from('xyz456', 'utf-8'),   
             criacao: new Date('2024-12-10'),
             atualizacao: new Date('2024-12-10'),
             app_implantacao: {
-              // Dados do app_implantacao, deve seguir a mesma estrutura, e as imagens também devem ser Buffer
+              // Dados do app_implantacao
               id: 1,
               nome_imovel: 'Fazenda Ouro Branco',
               localizacao: 'Zona rural de Ouro Branco, MG',
@@ -148,8 +146,8 @@ describe('AppimplantacaoService',() => {
               periodo_inicio: new Date('2024-01-01'),
               periodo_fim: new Date('2025-12-31'),
               area_implantada: 100.0,
-              foto_panoramica: Buffer.from('abc123', 'utf-8'),  // Alterado para Buffer
-              foto_detalhada: Buffer.from('xyz456', 'utf-8'),   // Alterado para Buffer
+              foto_panoramica: Buffer.from('abc123', 'utf-8'),  
+              foto_detalhada: Buffer.from('xyz456', 'utf-8'),   
               criacao: new Date('2024-12-10'),
               atualizacao: new Date('2024-12-10'),
             },
